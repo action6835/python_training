@@ -19,6 +19,17 @@ class AddNew(unittest.TestCase):
                             notes="notes")
         self.logout(wd)
 
+    def test_add_new_empty(self):
+        wd = self.wd
+        self.open_home_page(wd)
+        self.login(wd, username="admin", password="secret")
+        self.create_contact(wd, firstname="", middlename="", lastname="", nickname="",
+                            title="", company="", address="", home="",
+                            mobile="", work="", fax="", email="", email2="", email3="",
+                            homepage="", address2="", phone2="",
+                            notes="")
+        self.logout(wd)
+
     def logout(self, wd):
         wd.find_element_by_link_text("Logout").click()
 
