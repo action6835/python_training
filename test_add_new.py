@@ -13,7 +13,6 @@ class AddNew(unittest.TestCase):
     
     def test_add_new(self):
         wd = self.wd
-        self.open_home_page(wd)
         self.login(wd, username="admin", password="secret")
         self.create_contact(wd, Contact(firstname="first name", middlename="inital", lastname="last name", nickname="nickname", title="title", company="company", address="address", home="111",
                             mobile="222", work="333", fax="444", email="111@m.ru", email2="222@m.ru", email3="333@m.ru", homepage="homepage", address2="address2", phone2="home",
@@ -22,7 +21,6 @@ class AddNew(unittest.TestCase):
 
     def test_add_new_empty(self):
         wd = self.wd
-        self.open_home_page(wd)
         self.login(wd, username="admin", password="secret")
         self.create_contact(wd, Contact(firstname="", middlename="", lastname="", nickname="",
                             title="", company="", address="", home="",
@@ -93,6 +91,7 @@ class AddNew(unittest.TestCase):
         wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
 
     def login(self, wd, username, password):
+        self.open_home_page(wd)
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
         wd.find_element_by_name("user").send_keys(username)
