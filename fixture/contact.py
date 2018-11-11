@@ -15,6 +15,7 @@ class ContactHelper:
 
     def delete_first_contact(self):
         wd = self.app.wd
+        self.return_to_home_page()
         # select first contact
         wd.find_element_by_name("selected[]").click()
         # submit deletion
@@ -24,6 +25,7 @@ class ContactHelper:
 
     def modify_first(self, contact):
         wd = self.app.wd
+        self.return_to_home_page()
         # edit contact
         wd.find_element_by_css_selector("img[alt=\"Edit\"]").click()
         self.fill_form_contact(contact)
