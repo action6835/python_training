@@ -45,7 +45,7 @@ class ContactHelper:
         wd = self.app.wd
         self.return_to_home_page()
         # edit contact
-        wd.find_elements_by_css_selector("img[alt=\"Edit\"]")[index].click()
+        wd.find_elements_by_css_selector('img[alt="Edit"]')[index].click()
         self.fill_form_contact(contact)
         # update
         wd.find_element_by_name("update").click()
