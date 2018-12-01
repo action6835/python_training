@@ -102,3 +102,9 @@ class ContactHelper:
         self.return_to_home_page()
         # edit contact
         wd.find_elements_by_css_selector('img[alt="Edit"]')[index].click()
+
+    def open_contact_view_by_index(self, index):
+        wd = self.app.wd
+        self.return_to_home_page()
+        # view contact
+        wd.find_elements_by_css_selector('img[alt="Details"]')[index].click()
