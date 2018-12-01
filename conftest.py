@@ -1,5 +1,5 @@
 
-from application import Application
+from fixture.application import Application
 import pytest
 
 
