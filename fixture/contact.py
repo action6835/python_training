@@ -43,9 +43,7 @@ class ContactHelper:
 
     def modify_by_index(self, contact, index):
         wd = self.app.wd
-        self.return_to_home_page()
-        # edit contact
-        wd.find_elements_by_css_selector('img[alt="Edit"]')[index].click()
+        self.open_contact_to_edit_by_index(index)
         self.fill_form_contact(contact)
         # update
         wd.find_element_by_name("update").click()
@@ -98,3 +96,9 @@ class ContactHelper:
                 id = cells[0].find_element_by_tag_name("input").get_attribute("value")
                 self.contact_cache.append(Contact(firstname=firstname, lastname=lastname, id=id))
         return list(self.contact_cache)
+
+    def open_contact_to_edit_by_index(self, index):
+        wd = self.app.wd
+        self.return_to_home_page()
+        # edit contact
+        wd.find_elements_by_css_selector('img[alt="Edit"]')[index].click()
