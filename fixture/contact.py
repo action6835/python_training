@@ -20,6 +20,18 @@ class ContactHelper:
     def delete_first_contact(self):
         self.delete_contact_by_index(0)
 
+    def delete_contact_by_id(self, id):
+        wd = self.app.wd
+        self.return_to_home_page()
+        # select contact
+        wd.find_element_by_xpath("//a[@href='edit.php?id=%s']" % id).click()
+        # submit deletion
+        wd.find_element_by_xpath("//input[@value='Delete']").click()
+        # wd.switch_to_alert().accept()
+        wd.find_elements_by_css_selector("div.msgbox")
+        self.return_to_home_page()
+        self.contact_cache = None
+
     def delete_contact_by_index(self, index):
         wd = self.app.wd
         self.return_to_home_page()
