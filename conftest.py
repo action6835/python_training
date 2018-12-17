@@ -1,6 +1,6 @@
 
 from fixture.application import Application
-from  fixture.dbb import DbFixture
+from fixture.dbb import DbFixture
 import pytest
 import json
 import os.path
