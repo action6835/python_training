@@ -168,3 +168,15 @@ class ContactHelper:
         self.return_to_home_page()
         # view contact
         wd.find_elements_by_css_selector('img[alt="Details"]')[index].click()
+
+    def add_first_contact_to_group(self, id):
+        wd = self.app.wd
+        self.return_to_home_page()
+        # select contact
+        wd.find_elements_by_name("selected[]")[0].click()
+        wd.find_element_by_name("to_group").click()
+        wd.find_element_by_css_selector('select[name="to_group"] > option[value="%s"]' % id).click()
+        # add to group
+        wd.find_element_by_name("add").click()
+        self.return_to_home_page()
+        self.contact_cache = None
