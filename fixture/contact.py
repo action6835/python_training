@@ -174,9 +174,25 @@ class ContactHelper:
         self.return_to_home_page()
         # select contact
         wd.find_elements_by_name("selected[]")[0].click()
+        # select group
         wd.find_element_by_name("to_group").click()
         wd.find_element_by_css_selector('select[name="to_group"] > option[value="%s"]' % id).click()
         # add to group
         wd.find_element_by_name("add").click()
         self.return_to_home_page()
+        self.contact_cache = None
+
+    def del_contact_from_group(self, group_id, contact_id):
+        wd = self.app.wd
+        self.return_to_home_page()
+        # select group
+        wd.find_element_by_name("group").click()
+        wd.find_element_by_css_selector('select[name="group"] > option[value="%s"]' % group_id).click()
+        # select contact
+        wd.find_element_by_xpath("//input[@id='%s']" % contact_id).click()
+        # delete contact from group
+        wd.find_element_by_name("remove").click()
+        self.return_to_home_page()
+        wd.find_element_by_name("group").click()
+        wd.find_element_by_css_selector('select[name="group"] > option[value=""]').click()
         self.contact_cache = None
