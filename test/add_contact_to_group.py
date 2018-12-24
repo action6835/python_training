@@ -25,9 +25,9 @@ def test_add_contact_to_group(app, db):
     contact = old_contacts[0]
     # добавление полученного контакста к старому списку контактов группы
     old_contacts_in_group.append(contact)
-    # зачитывание нового списка контактов в группах
+    # зачитывание нового списка контактов в группе
     new_contacts_in_group = db2.get_contacts_in_group(Group(id=group_id))
-    # сравнение старого и нового списков контактов в группах
+    # сравнение старого и нового списков контактов в группе
     assert sorted(old_contacts_in_group, key=Contact.id_or_max) == sorted(new_contacts_in_group, key=Contact.id_or_max)
 
 
